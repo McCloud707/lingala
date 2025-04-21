@@ -17,6 +17,7 @@ export async function POST(request: Request) {
         const {data, error} = await supabase.from('waitlist_signups').insert([{email: user_email}])
 
         if(error) {
+            console.error(error)
             return new Response(JSON.stringify({success: false, data}), {
                 status: 500
             })
@@ -26,7 +27,8 @@ export async function POST(request: Request) {
             status: 200,
         })
 
-    } catch {
+    } catch(e) {
+        console.error(e)
         return new Response(JSON.stringify({ error: 'Invalid request' }), {
             status: 400,
         })
