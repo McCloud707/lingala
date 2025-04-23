@@ -59,7 +59,7 @@ export default async function REGISTER({
 
         <div className="text-center">
           <p>
-            Already have an account?{" "}
+            Development{" "}
             <Link className="font-medium underline" href="/login">
               Login
             </Link>
