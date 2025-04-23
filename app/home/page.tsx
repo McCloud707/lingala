@@ -11,11 +11,12 @@ export default function Home() {
     return emailRegex.test(test_email);
   };
 
-  const [email, setEmail] = useState<string>(
-    "Enter your E-Mail address to join the waitlist!"
-  );
+  const [email, setEmail] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>(
+    "Join the waitlist with your email"
+  );
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ export default function Home() {
 
     try {
       setLoading(true);
+      setError(false);
       setMessage("");
 
       if (!isValidEmail(email)) {
@@ -50,6 +52,7 @@ export default function Home() {
     } catch {
       setLoading(false);
       setEmail("");
+      setError(true);
       setMessage("Ensure email is valid and not already on waitlist");
     }
   };
@@ -83,10 +86,14 @@ export default function Home() {
               <Input
                 value={email}
                 className={
-                  "placeholder:text-black  focus:placeholder-transparent w-6/8 text-center py-4 md:placeholder:text-lg placeholder:text-xs" +
-                  (message !== "" ? " placeholder:text-red-500" : "")
+                  "w-6/8 text-center py-4 " +
+                  "text-xs md:text-lg " + // responsive text size
+                  "placeholder:text-black focus:placeholder-transparent " + // placeholder hidden on focus
+                  (error
+                    ? " placeholder:text-red-500"
+                    : " placeholder:text-[2px] md:placeholder:text-base")
                 }
-                placeholder={message === "" ? email : message}
+                placeholder={error ? message : message}
                 onChange={handleInputChange}
               />
               <Button

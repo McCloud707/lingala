@@ -16,7 +16,7 @@ export default async function LOGIN({
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
-      <Card className="px-8 w-1/3">
+      <Card className="px-8 md:w-2/5 xl:w-1/3">
         <CardTitle className="text-lg">Login</CardTitle>
         <CardDescription>
           Enter your email and password to login

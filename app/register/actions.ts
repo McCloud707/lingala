@@ -17,6 +17,7 @@ export async function register(formData: FormData) {
     .single();
 
   if (waitlistError) {
+    console.error(waitlistError);
     redirect("/register?error=You're not on the waitlist or not approved yet");
   }
 
@@ -41,10 +42,10 @@ export async function register(formData: FormData) {
   };
 
   const { error } = await supabase.auth.signUp(data);
-
-  console.log(error);
+  console.error(error);
 
   if (error) {
+    console.error(error);
     redirect(`/register?error=${encodeURIComponent(error.message)}`);
   }
 

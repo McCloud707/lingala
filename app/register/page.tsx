@@ -16,7 +16,7 @@ export default async function REGISTER({
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <Card className="px-8 w-1/3">
+      <Card className="px-8 md:w-3/5 lg:w-35/100">
         <CardTitle className="text-lg">Register</CardTitle>
         <CardDescription>
           Enter your email and password to register
