@@ -21,7 +21,7 @@ export default async function LOGIN({
         <CardDescription>
           Enter your email and password to login
         </CardDescription>
-        ƒ{/* Display error message if it exists */}
+        {/* Display error message if it exists */}
         {errorMessage && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm">
             {errorMessage}
@@ -45,7 +45,7 @@ export default async function LOGIN({
           </Button>
           <div className="text-center">
             <p>
-              Don&apost have an account?{" "}
+              {"Don't have an account? "}
               <Link className="font-medium underline" href="/register">
                 Register
               </Link>{" "}
