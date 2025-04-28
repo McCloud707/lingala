@@ -1,5 +1,12 @@
 import { createSupabaseClient } from "@/app/lib/supabase/server";
 
+type GradeRequest = {
+  topic_id: number
+  user_id: string
+  language: string
+  change: number
+}
+
 export async function POST(request: Request) {
   try {
     const supabase = await createSupabaseClient();
@@ -17,34 +24,36 @@ export async function POST(request: Request) {
       );
     }
 
-    const requestBody = await request.json();
+    const requestBody : GradeRequest[] = await request.json();
     console.log(requestBody);
 
-    requestBody.forEach((element: any) => {
+    requestBody.forEach((element: GradeRequest) => {
       element.user_id = user_email;
     });
 
-    console.log(requestBody)
+    console.log(requestBody);
 
-    const {data: updateData, error} = await supabase.rpc("bulk_update_user_progress", {
-      updates: requestBody,
-    });
+    const { data: updateData, error } = await supabase.rpc(
+      "bulk_update_user_progress",
+      {
+        updates: requestBody,
+      }
+    );
 
     if (error) {
-        console.error(error);
-        return new Response(
-          JSON.stringify({ error: "Error updating progress" }),
-          {
-            status: 400,
-          }
-        );
+      console.error(error);
+      return new Response(
+        JSON.stringify({ error: "Error updating progress" }),
+        {
+          status: 400,
+        }
+      );
     }
-    console.log(updateData)
+    console.log(updateData);
 
     return new Response(JSON.stringify({ error: "Updated progress" }), {
       status: 200,
     });
-
   } catch (error) {
     console.error(error);
     return new Response(JSON.stringify({ error: "internal server erorr" }), {

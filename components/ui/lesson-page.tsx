@@ -1,6 +1,5 @@
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Button } from "./button";
 import Link from "next/link";
 
 type LessonPageProps = {
@@ -22,7 +21,7 @@ export default function LessonPage({ lessonData, onClick }: LessonPageProps) {
       </div>
       <div className="px-8 py-2 h-full">
         <div className="markdown">
-          <ReactMarkdown>{lessonData.lesson_data}</ReactMarkdown>
+          <ReactMarkdown>{lessonData?.lesson_data}</ReactMarkdown>
           <div className="w-full flex justify-center">
             <Link
               className="w-1/8 p-2 rounded-xl text-black border-black border-1 border-solid text-center no-underline"

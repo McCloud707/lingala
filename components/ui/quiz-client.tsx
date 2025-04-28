@@ -87,12 +87,6 @@ export default function QuizClient({ quizData }: QuizClientProps) {
     }
   };
 
-  const handleReset = () => {
-    setSelectedAnswers(Array(quizData.length).fill(""));
-    setIsSubmitted(false);
-    setScore(0);
-  };
-
   // Function to determine the class for each option
   const getOptionClass = (questionIndex: number, option: string) => {
     if (!isSubmitted) {

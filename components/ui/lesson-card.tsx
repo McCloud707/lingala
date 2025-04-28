@@ -1,27 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { Card, CardHeader } from "./card";
 import { Progress } from "./progress";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogOverlay,
-  DialogTitle,
-  DialogTrigger,
-} from "./dialog";
-import Modal from "./modal";
+
 
 type LessonCardProps = {
   title: string;
-  id: string;
+  id: number;
   progress: number;
-  onClick: any
+  onClick: any;
 };
 
-export default function LessonCard({ title, id, progress, onClick }: LessonCardProps) {
+export default function LessonCard({ title, progress, onClick }: LessonCardProps) {
   return (
     <div onClick={onClick} className="w-full h-full flex items-center justify-center p-2s">
       <Card className="border-solid w-full max-w-xl border-1 border-black flex flex-col">

@@ -2,12 +2,17 @@ import createOpenAIClient from "@/app/lib/openai/openai";
 import { createSupabaseClient } from "@/app/lib/supabase/server";
 import QuizClient from "@/components/ui/quiz-client";
 
+interface Question {
+  question: string,
+  options: string[],
+  topic_id: number,
+  language: string,
+}
+
 export default async function QUIZ() {
   const supabase = await createSupabaseClient();
 
   const { data: userData } = await supabase.auth.getUser();
-
-  const email = userData.user?.email;
 
   const { data, error } = await supabase
     .from("user_progress")
@@ -67,7 +72,7 @@ export default async function QUIZ() {
 
   const responseData = JSON.parse(response.output_text).data
 
-  responseData.forEach((question: any, index: number)=> {
+  responseData.forEach((question: Question)=> {
     question.options = shuffleArray(question.options)
   })
 
