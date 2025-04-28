@@ -55,7 +55,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-center">
+    <div className="min-h-screen max-w-3xl flex items-center justify-center text-center">
       <div className="container max-w-3xl text-center px-4 py-12">
         <h1 className="text-7xl font-extrabold mb-8">Lingala</h1>
         <h2 className="text-4 sm:text-lg md:text-xl mb-16 font-medium">

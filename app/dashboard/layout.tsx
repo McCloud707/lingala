@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/ui/app-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +11,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="h-screen w-full flex justify-center">{children}</main>
+      <body>
+        <div className="max-h-screen">
+          <SidebarTrigger className="mt-2.5" />
+        </div>
+        {children}
+      </body>
     </SidebarProvider>
   );
 }

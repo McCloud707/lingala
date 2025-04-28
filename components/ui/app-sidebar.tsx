@@ -63,8 +63,11 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu className="w-full">
               {items.map((item) => (
-                <SidebarMenuItem className="px-4 py-2 text-lg" key={item.title}>
-                  <a href={item.href}>
+                <SidebarMenuItem
+                  className="px-3 py-1.5 text-base rounded-md hover:bg-gray-100"
+                  key={item.title}
+                >
+                  <a className="" href={item.href}>
                     <span>{item.title}</span>
                   </a>
                 </SidebarMenuItem>
